@@ -25,7 +25,7 @@ actions:
       port: 5000
       method: post
       path: /upload
-      contentType: image/png
+      contentType: multipart/form-data
     output:
       type: any
   deleteObject:

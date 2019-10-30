@@ -14,4 +14,4 @@ jobs:
     
     steps:
       - uses: actions/checkout@v1
-      - uses: arinono/validate@v4
+      - uses: arinono/validate@v5

@@ -3,8 +3,6 @@ const yamljs = require('yamljs')
 const path = require('path')
 const actions = require('./dist/routes').default
 
-const PORT = 5000
-
 const json = {
   oms: 1,
   lifecycle: { startup: { command: ['node', '/app/dist/index.js'] } },

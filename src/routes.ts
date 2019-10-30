@@ -17,7 +17,7 @@ export interface IRoute {
 export default {
   'upload': {
     method: 'post',
-    contentType: 'image/png',
+    contentType: 'multipart/form-data',
     args: {
       'file': {
         in: 'file',
