@@ -21,6 +21,23 @@ health:
     port: 5000
 actions:
   upload:
+    arguments:
+      file:
+        required: true
+        in: requestBody
+        type: any
+      bucket:
+        required: true
+        in: requestBody
+        type: string
+      key:
+        required: true
+        in: requestBody
+        type: string
+      options:
+        required: false
+        in: requestBody
+        type: map
     http:
       port: 5000
       method: post
@@ -29,6 +46,15 @@ actions:
     output:
       type: any
   deleteObject:
+    arguments:
+      bucket:
+        required: true
+        in: requestBody
+        type: string
+      key:
+        required: true
+        in: requestBody
+        type: string
     http:
       port: 5000
       method: delete
@@ -36,3 +62,10 @@ actions:
       contentType: application/json
     output:
       type: any
+environment:
+  AWS_ACCESS_KEY_ID:
+    type: string
+    required: true
+  AWS_SECRET_ACCESS_KEY:
+    type: string
+    required: true

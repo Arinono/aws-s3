@@ -31,14 +31,14 @@ for (const key in actions) {
   if (actions.hasOwnProperty(key)) {
     const action = actions[key]
     json.actions[key] = {}
-    if (action.args.length > 0) {
+    if (action.args) {
       json.actions[key].arguments = {}
       for (const kargs in actions[key].args) {
         if (actions[key].args.hasOwnProperty(kargs)) {
           const arg = actions[key].args[kargs]
           json.actions[key].arguments[kargs] = {
             required: arg.required,
-            in: arg.in,
+            in: arg.in === 'body' || arg.in === 'file' ? 'requestBody' : arg.in ,
             type: arg.type
           }
         }
@@ -51,6 +51,17 @@ for (const key in actions) {
       contentType: action.contentType
     }
     json.actions[key].output = { type: 'any' }
+  }
+}
+
+json.environment = {
+  'AWS_ACCESS_KEY_ID': {
+    type: 'string',
+    required: true
+  },
+  'AWS_SECRET_ACCESS_KEY': {
+    type: 'string',
+    required: true
   }
 }
 

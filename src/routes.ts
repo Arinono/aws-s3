@@ -48,11 +48,13 @@ export default {
     args: {
       'bucket': { 
         in: 'body',
-        required: true
+        required: true,
+        type: 'string'
       },
       'key': {
         in: 'body',
-        required: true
+        required: true,
+        type: 'string'
       }
     },
     fn: deleteObject
