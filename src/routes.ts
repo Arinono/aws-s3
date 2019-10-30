@@ -1,5 +1,6 @@
 import upload from './routes/upload'
 import deleteObject from './routes/object/delete'
+import getObject from './routes/object/get'
 import deleteObjects from './routes/objects/delete'
 import copyObject from './routes/object/copy'
 import createBucket from './routes/bucket/create'
@@ -39,7 +40,7 @@ const objects = {
   'objects': {
     in: 'body',
     required: true,
-    type: 'map'
+    type: 'list'
   }
 }
 
@@ -73,6 +74,24 @@ export default {
       ...key
     },
     fn: deleteObject
+  },
+  'getObject': {
+    method: 'get',
+    help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#getObject-property',
+    contentType: 'application/json',
+    args: {
+      'bucket': { 
+        in: 'query',
+        required: true,
+        type: 'string'
+      },
+      'key': {
+        in: 'query',
+        required: true,
+        type: 'string'
+      }    
+    },
+    fn: getObject
   },
   'copyObject': {
     method: 'post',
@@ -114,7 +133,7 @@ export default {
   },
   'deleteObjects': {
     method: 'delete',
-    help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObject-property',
+    help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObjects-property',
     contentType: 'application/json',
     args: {
       ...bucket,

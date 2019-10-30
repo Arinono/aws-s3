@@ -64,6 +64,24 @@ actions:
     help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObject-property'
     output:
       type: any
+  getObject:
+    arguments:
+      bucket:
+        required: true
+        in: query
+        type: string
+      key:
+        required: true
+        in: query
+        type: string
+    http:
+      port: 5000
+      method: get
+      path: /getObject
+      contentType: application/json
+    help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#getObject-property'
+    output:
+      type: any
   copyObject:
     arguments:
       bucket:
@@ -127,13 +145,13 @@ actions:
       objects:
         required: true
         in: requestBody
-        type: map
+        type: list
     http:
       port: 5000
       method: delete
       path: /deleteObjects
       contentType: application/json
-    help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObject-property'
+    help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObjects-property'
     output:
       type: any
 environment:
