@@ -118,6 +118,24 @@ actions:
     help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteBucket-property'
     output:
       type: any
+  deleteObjects:
+    arguments:
+      bucket:
+        required: true
+        in: requestBody
+        type: string
+      objects:
+        required: true
+        in: requestBody
+        type: map
+    http:
+      port: 5000
+      method: delete
+      path: /deleteObjects
+      contentType: application/json
+    help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObject-property'
+    output:
+      type: any
 environment:
   AWS_ACCESS_KEY_ID:
     type: string

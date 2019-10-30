@@ -1,5 +1,6 @@
 import upload from './routes/upload'
 import deleteObject from './routes/object/delete'
+import deleteObjects from './routes/objects/delete'
 import copyObject from './routes/object/copy'
 import createBucket from './routes/bucket/create'
 import deleteBucket from './routes/bucket/delete'
@@ -31,6 +32,14 @@ const key = {
     in: 'body',
     required: true,
     type: 'string'
+  }
+}
+
+const objects = {
+  'objects': {
+    in: 'body',
+    required: true,
+    type: 'map'
   }
 }
 
@@ -102,6 +111,16 @@ export default {
       ...bucket
     },
     fn: deleteBucket
+  },
+  'deleteObjects': {
+    method: 'delete',
+    help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObject-property',
+    contentType: 'application/json',
+    args: {
+      ...bucket,
+      ...objects
+    },
+    fn: deleteObjects
   },
   'health': {
     method: 'get',
