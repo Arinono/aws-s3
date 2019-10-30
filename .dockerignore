@@ -1,0 +1,8 @@
+.github
+node_modules
+.gitingore
+Dockerfile
+yarn-error.log
+microservice.yml
+oms.yml
+generate-oms.yml.js

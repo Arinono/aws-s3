@@ -1,0 +1,17 @@
+name: Validate microservice
+
+on: [push]
+
+jobs:
+  
+  validate:
+  
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [12.x]
+    
+    steps:
+      - uses: actions/checkout@v1
+      - uses: arinono/validate@v4

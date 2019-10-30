@@ -1,0 +1,38 @@
+oms: 1
+lifecycle:
+  startup:
+    command:
+      - node
+      - /app/dist/index.js
+info:
+  version: 0.0.1
+  title: aws-s3
+  description: 'AWS S3 SDK as microservice'
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+  contact:
+    name: 'Aurelien ARINO'
+    url: 'git@github.com:Arinono/aws-s3.git'
+    email: aurelien@storyscript.io
+health:
+  http:
+    path: /health
+    port: 5000
+actions:
+  upload:
+    http:
+      port: 5000
+      method: post
+      path: /upload
+      contentType: image/png
+    output:
+      type: any
+  deleteObject:
+    http:
+      port: 5000
+      method: delete
+      path: /deleteObject
+      contentType: application/json
+    output:
+      type: any
