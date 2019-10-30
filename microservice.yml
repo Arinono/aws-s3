@@ -154,6 +154,33 @@ actions:
     help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObjects-property'
     output:
       type: any
+  listObjects:
+    arguments:
+      bucket:
+        required: true
+        in: query
+        type: string
+      limit:
+        required: true
+        in: query
+        type: number
+    http:
+      port: 5000
+      method: get
+      path: /listObjects
+      contentType: application/json
+    help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjects-property'
+    output:
+      type: any
+  listBuckets:
+    http:
+      port: 5000
+      method: get
+      path: /listBuckets
+      contentType: application/json
+    help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listBuckets-property'
+    output:
+      type: any
 environment:
   AWS_ACCESS_KEY_ID:
     type: string

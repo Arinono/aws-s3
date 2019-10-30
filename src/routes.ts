@@ -5,6 +5,8 @@ import deleteObjects from './routes/objects/delete'
 import copyObject from './routes/object/copy'
 import createBucket from './routes/bucket/create'
 import deleteBucket from './routes/bucket/delete'
+import listObjects from './routes/objects/list'
+import listBuckets from './routes/buckets/list'
 
 export interface IArg {
   in: string
@@ -140,6 +142,30 @@ export default {
       ...objects
     },
     fn: deleteObjects
+  },
+  'listObjects': {
+    method: 'get',
+    help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjects-property',
+    contentType: 'application/json',
+    args: {
+      'bucket': { 
+        in: 'query',
+        required: true,
+        type: 'string'
+      },
+      'limit': { 
+        in: 'query',
+        required: true,
+        type: 'number'
+      },
+    },
+    fn: listObjects
+  },
+  'listBuckets': {
+    method: 'get',
+    help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listBuckets-property',
+    contentType: 'application/json',
+    fn: listBuckets
   },
   'health': {
     method: 'get',
