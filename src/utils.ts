@@ -8,11 +8,11 @@ export const checkArgs = (route: string, req: any) => {
       if (arg.required) {
         if (arg.in === 'file') {
           if (!req.file) {
-            errors.push(`Missing property required ${key} in ${arg.in}`)
+            errors.push(`Missing required property '${key}' in '${arg.in}'`)
           }
         } else {
           if (!req[arg.in][key]) {
-            errors.push(`Missing property required ${key} in ${arg.in}`)
+            errors.push(`Missing required property '${key}' in '${arg.in}'`)
           }
         }
       }

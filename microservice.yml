@@ -26,6 +26,10 @@ actions:
         required: true
         in: requestBody
         type: any
+      options:
+        required: false
+        in: requestBody
+        type: map
       bucket:
         required: true
         in: requestBody
@@ -34,15 +38,12 @@ actions:
         required: true
         in: requestBody
         type: string
-      options:
-        required: false
-        in: requestBody
-        type: map
     http:
       port: 5000
       method: post
       path: /upload
       contentType: multipart/form-data
+    help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property'
     output:
       type: any
   deleteObject:
@@ -60,6 +61,61 @@ actions:
       method: delete
       path: /deleteObject
       contentType: application/json
+    help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObject-property'
+    output:
+      type: any
+  copyObject:
+    arguments:
+      bucket:
+        required: true
+        in: requestBody
+        type: string
+      key:
+        required: true
+        in: requestBody
+        type: string
+      copySource:
+        required: true
+        in: requestBody
+        type: string
+    http:
+      port: 5000
+      method: post
+      path: /copyObject
+      contentType: application/json
+    help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#copyObject-property'
+    output:
+      type: any
+  createBucket:
+    arguments:
+      bucket:
+        required: true
+        in: requestBody
+        type: string
+      locationConstraint:
+        required: false
+        in: requestBody
+        type: string
+    http:
+      port: 5000
+      method: post
+      path: /createBucket
+      contentType: application/json
+    help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#createBucket-property'
+    output:
+      type: any
+  deleteBucket:
+    arguments:
+      bucket:
+        required: true
+        in: requestBody
+        type: string
+    http:
+      port: 5000
+      method: delete
+      path: /deleteBucket
+      contentType: application/json
+    help: 'https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteBucket-property'
     output:
       type: any
 environment:

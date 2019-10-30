@@ -50,6 +50,7 @@ for (const key in actions) {
       path: `/${key}`,
       contentType: action.contentType
     }
+    json.actions[key].help = action.help
     json.actions[key].output = { type: 'any' }
   }
 }
