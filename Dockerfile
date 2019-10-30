@@ -5,6 +5,6 @@ COPY package.json .
 COPY yarn.lock .
 RUN yarn
 COPY . .
-RUN tsc
+RUN yarn build
 
 CMD [ "node ./dist/index.js" ]
